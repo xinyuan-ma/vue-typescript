@@ -3,7 +3,7 @@
     <input type="text" v-model="inputVal" placeholder="内容">
     <button @click="add()">添加</button>
     <todoItem v-for="(item, key) in inputArr" ref="todolist" :content="item" :key="key" @click.native="deleteVal(key)"></todoItem>
-    <todoItem  ref="todolist" @click.native="deleteVal(key)"></todoItem>
+    <p>{{$store.state.user}}</p>
   </div>
 </template>
 <script lang="ts">
@@ -21,10 +21,14 @@ export default class App extends Vue{
   private inputArr:Array<string>= ['232', '32', '33']
   private add(){
     this.inputArr.push(this.inputVal)
+    this.$store.commit('setUser', this.inputVal)
     this.inputVal = ''
   }
   private deleteVal(key:number):void {
     this.inputArr.splice(key,1)
+  }
+  private created(): void {
+    console.log(this.$store.state.user, 'user')
   }
 }
 
