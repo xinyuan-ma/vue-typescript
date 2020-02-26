@@ -1,4 +1,5 @@
 const state:object = {
+  user: 'loginuser',
   login: 'loginInfo'
 }
 const mutations:any = {

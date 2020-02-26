@@ -6,11 +6,8 @@ import userInfo from './module/user'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
-  modules: {
-    // login,
-    userInfo
-  }
-  // state: {user: 'user'},
+  // // 单module
+  // state: {user: 'user12345'},
   // mutations: {
   //   setUser(state: any, user:string): void {
   //     state.user = user
@@ -18,4 +15,11 @@ export default new Vuex.Store({
   // },
   // actions: {},
   // modules: {}
+
+// ——————————————
+//   多模块modules
+  modules: {
+    login,
+    userInfo
+  }
 })
