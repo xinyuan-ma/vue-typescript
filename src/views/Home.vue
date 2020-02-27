@@ -29,9 +29,11 @@ const loginModule = namespace('login');
   }
 })
 export default class App extends Vue{
+
   // @someModule.State(state => state.user) user;
   // @State('user') user!:string
   // @Mutation('setUser') setUser!:any
+
   @loginModule.State(state => state.user) loginUser!:string
   @someModule.State(state => state.user) user11!:string
   @someModule.Mutation('setUser') setUser!:any
