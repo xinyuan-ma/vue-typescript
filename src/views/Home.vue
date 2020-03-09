@@ -4,8 +4,7 @@
         <input type="text" v-model="inputVal" placeholder="内容">
         <p>{{inputT}}inputT</p>
         <button @click="add()">添加</button>
-        <todoItem v-for="(item, key) in inputArr" ref="todolist" :content="item" :key="key"
-                  @click.native="deleteVal(key)"></todoItem>
+        <todoItem v-for="(item, key) in inputArr" ref="todolist" :content="item" :key="key" @change="changeEmit"></todoItem>
         <muta></muta>
         <router-link to="/todoItem">跳转到todoItem</router-link>
         <p>{{loginUser}}</p>
@@ -35,10 +34,9 @@
             addVal(val:string):string {
                 return val + '!filters'
             }
-        },
-        // mixins:[Mix]
+        }
     })
-    export default class App extends Vue {
+    export default class Home extends Vue {
 
         // @someModule.State(state => state.user) user;
         // @State('user') user!:string
@@ -49,9 +47,10 @@
         @someModule.Mutation('setUser') setUser!: any
         @someModule.State(state => state.userInfo) userInfo!: string
         @someModule.Mutation('setUserInfo') setUserInfo!: any
+
         private inputVal: string = ''
         private home:string = 'filter'
-        private inputArr: Array<string> = ['232']
+        private inputArr: Array<string> = ['232', '12', '33']
 
         private add() {
             this.inputT = '222'
@@ -75,6 +74,9 @@
         private set inputT(param:string) {
             console.log(param, 'param');
             this.inputVal = param
+        }
+        private changeEmit (val:string):void {
+            console.log(val, 'changeEmit')
         }
 
     }
