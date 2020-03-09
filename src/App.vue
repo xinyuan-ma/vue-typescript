@@ -5,11 +5,17 @@
 </template>
 <script lang="ts">
 import {Component, Vue, Prop} from 'vue-property-decorator'
+import Mixins from './mixins/mixins'
+import Mixins1 from './mixins/mixins1'
 
 @Component({
-  components:{}
+  mixins: [Mixins, Mixins1]
 })
 export default class App extends Vue{
+  created(): void {
+    console.log(this.mixinVal, 'mixinVal')
+    this.getMixin()
+  }
 }
 
 </script>
